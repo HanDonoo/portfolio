@@ -11,7 +11,7 @@ const Header: React.FC<HeaderProps> = ({ current, onNavigate }) => {
         <AppBar position="static">
             <Toolbar>
                 <Typography variant="h6" sx={{ flexGrow: 1 }}>
-                    My Website
+                    Kevin
                 </Typography>
                 <Box>
                     <Button
