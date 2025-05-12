@@ -12,10 +12,10 @@ const App: React.FC = () => {
             display="flex"
             flexDirection="column"
             minHeight="100vh"
-            bgcolor="#f5f5f5"
+            bgcolor="#ffffff" // 背景改为白色
         >
             <Header current={section} onNavigate={setSection} />
-            <Box flex="1">
+            <Box flex="1" bgcolor="#ffffff"> {/* 内容区域也设置为白色 */}
                 <Content section={section} />
             </Box>
             <Footer />

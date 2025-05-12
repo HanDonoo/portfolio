@@ -8,7 +8,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ current, onNavigate }) => {
     return (
-        <AppBar position="static">
+        <AppBar position="static" sx={{ bgcolor: '#ffffff', color: '#000000' }}>
             <Toolbar>
                 <Typography variant="h6" sx={{ flexGrow: 1 }}>
                     Kevin

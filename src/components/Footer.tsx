@@ -8,8 +8,8 @@ const Footer: React.FC = () => {
             sx={{
                 py: 2,
                 textAlign: 'center',
-                bgcolor: '#1976d2',
-                color: 'white'
+                bgcolor: '#ffffff', // 背景白色
+                color: '#000000'     // 字体黑色
             }}
         >
             <Typography variant="body2">
