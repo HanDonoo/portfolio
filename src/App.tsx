@@ -1,25 +1,47 @@
-import React, { useState } from 'react';
-import { Box } from '@mui/material';
+import React, { useRef } from 'react';
 import Header from './components/Header';
-import Content from './components/Content';
 import Footer from './components/Footer';
+import {
+    About,
+    Projects,
+    Portfolio,
+    Contact,
+} from './components/Content';
+import {Experience} from './components/Experience';
 
 const App: React.FC = () => {
-    const [section, setSection] = useState<'about' | 'portfolio' | 'contact'>('about');
+    const aboutRef = useRef<HTMLDivElement>(null);
+    const experienceRef = useRef<HTMLDivElement>(null);
+    const projectsRef = useRef<HTMLDivElement>(null);
+    const portfolioRef = useRef<HTMLDivElement>(null);
+    const contactRef = useRef<HTMLDivElement>(null);
+
+    const handleNavigate = (section: string) => {
+        const refs: Record<string, React.RefObject<HTMLDivElement>> = {
+            about: aboutRef,
+            experience: experienceRef,
+            projects: projectsRef,
+            portfolio: portfolioRef,
+            contact: contactRef,
+        };
+
+        refs[section]?.current?.scrollIntoView({ behavior: 'smooth' });
+    };
 
     return (
-        <Box
-            display="flex"
-            flexDirection="column"
-            minHeight="100vh"
-            bgcolor="#ffffff" // 背景改为白色
-        >
-            <Header current={section} onNavigate={setSection} />
-            <Box flex="1" bgcolor="#ffffff"> {/* 内容区域也设置为白色 */}
-                <Content section={section} />
-            </Box>
+        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+            <Header onNavigate={handleNavigate} />
+
+            <div style={{ paddingTop: '80px', paddingLeft: '1rem', paddingRight: '1rem', flex: 1 }}>
+                <About ref={aboutRef} />
+                <Experience ref={experienceRef} />
+                <Projects ref={projectsRef} />
+                <Portfolio ref={portfolioRef} />
+                <Contact ref={contactRef} />
+            </div>
+
             <Footer />
-        </Box>
+        </div>
     );
 };
 
