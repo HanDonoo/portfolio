@@ -22,6 +22,7 @@ const Header: React.FC<HeaderProps> = ({ current, onNavigate }) => {
                     {navItems.map((item) => (
                         <button
                             key={item.value}
+                            // @ts-expect-error
                             onClick={() => onNavigate(item.value)}
                             style={{
                                 ...styles.button,

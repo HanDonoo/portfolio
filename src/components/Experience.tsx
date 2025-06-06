@@ -94,6 +94,7 @@ export const Experience = forwardRef<HTMLDivElement>((_, ref) => {
                         {experiences[selectedIndex].period}
                     </p>
                     {experiences[selectedIndex].description.map((line, idx) => (
+                        // @ts-expect-error
                         <p key={idx} style={paragraphStyle}>
                             {line}
                         </p>

@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import SkillSection from './SkillSection';
-import {Experience} from './Experience';
 
 const sectionStyle = {
     marginBottom: '2rem',
@@ -72,6 +71,7 @@ export const About = forwardRef<HTMLDivElement>((_, ref) => (
                     `My expertise spans microservices, cloud infrastructure (AWS, Azure), and clean architecture using Java, .NET, and Node.js — all underpinned by a strong focus on performance, resilience, and quality.`,
                     `Now based in Auckland 🇳🇿, I’m continuing my journey as a builder, problem-solver, and team player — always looking to craft impactful software that serves both users and business goals.`,
                 ].map((text, i) => (
+                    // @ts-expect-error
                     <p key={i} style={paragraphStyle}>
                         {text}
                     </p>
@@ -86,29 +86,20 @@ export const About = forwardRef<HTMLDivElement>((_, ref) => (
 export const Projects = forwardRef<HTMLDivElement>((_, ref) => (
     <div id="projects" ref={ref} style={sectionStyle}>
         <h2 style={titleStyle}>Projects</h2>
-        <p style={paragraphStyle}>Projects content goes here.</p>
+
     </div>
 ));
 
 export const Portfolio = forwardRef<HTMLDivElement>((_, ref) => (
     <div id="portfolio" ref={ref} style={sectionStyle}>
         <h2 style={titleStyle}>Blog / Portfolio</h2>
-        <p style={paragraphStyle}>Here is some of my work...</p>
+
     </div>
 ));
 
 export const Contact = forwardRef<HTMLDivElement>((_, ref) => (
     <div id="contact" ref={ref} style={sectionStyle}>
         <h2 style={titleStyle}>Contact</h2>
-        <p style={paragraphStyle}>
-            Contact me on{' '}
-            <a
-                href="https://www.linkedin.com/in/dongdong-han-1059882b6"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                LinkedIn
-            </a>
-        </p>
+
     </div>
 ));
