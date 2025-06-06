@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
 import SkillSection from './SkillSection';
+import ProjectCard from './ProjectCard';
 
 const sectionStyle = {
     marginBottom: '2rem',
@@ -83,10 +84,53 @@ export const About = forwardRef<HTMLDivElement>((_, ref) => (
     </div>
 ));
 
+
+const projectsData = [
+    // ... 你的项目数据 ...
+    {
+        title: "MoeGo Branded App",
+        description: "一个为宠物行业打造的白标移动应用平台...",
+        features: ["通过这个可扩展的解决方案..."],
+        imageUrl: "/images/moego-app-image.jpg",
+        projectUrl: "moego.pet/pet-panne-portal",
+        borderColor: "#fbcfe8",
+    },
+    {
+        title: "MoeGo Online Booking System",
+        description: "一个功能强大且灵活的预约排程平台...",
+        features: ["主导了该产品的架构设计...", "目前 MoeGo 超过三分之一..."],
+        imageUrl: "/images/moego-booking-image.jpg",
+        projectUrl: "moego.pet/online-booking-feature",
+        borderColor: "#d8b4fe",
+    },
+];
+
+const projectsContainerStyle = {
+    display: 'flex',
+    flexWrap: 'wrap' as const,
+    gap: '2rem',
+    justifyContent: 'center',
+};
+
 export const Projects = forwardRef<HTMLDivElement>((_, ref) => (
     <div id="projects" ref={ref} style={sectionStyle}>
-        <h2 style={titleStyle}>Projects</h2>
-
+        <h2 style={{ ...titleStyle, textAlign: 'center' }}>Recent Projects</h2>
+        <div style={projectsContainerStyle}>
+            {projectsData.map((project, index) => (
+                <ProjectCard
+                    key={index}
+                    title={project.title}
+                    description={project.description}
+                    features={project.features}
+                    imageUrl={project.imageUrl}
+                    projectUrl={project.projectUrl}
+                    borderColor={project.borderColor}
+                    // 修正：将样式作为 prop 传入
+                    // @ts-expect-error
+                    paragraphStyle={paragraphStyle}
+                />
+            ))}
+        </div>
     </div>
 ));
 
