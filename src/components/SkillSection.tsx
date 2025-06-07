@@ -13,7 +13,7 @@ const skillBoxStyle = (backgroundColor: string) => ({
     borderRadius: '16px',
     boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
     padding: '1.5rem',
-    width: '400px',
+    width: '350px',
     color: '#000',
     display: 'flex',
     flexDirection: 'column' as const,
