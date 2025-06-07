@@ -9,24 +9,36 @@ interface ExperienceData {
 
 const experiences: ExperienceData[] = [
     {
-        company: 'MoeGo',
-        title: 'Product Owner & Senior Engineer',
-        period: 'Sep 2021 – Sep 2024',
+        company: 'Matricle (NZ)',
+        title: 'Full Stack Software Engineer (Part-Time)',
+        period: 'Apr 2024 – Present',
         description: [
-            'MoeGo is a SaaS platform serving the pet grooming industry.',
-            'I joined MoeGo when the team was just 20 people. I helped shape our architecture, dev workflow, and team culture.',
-            'Later I led the Booking 2.0 initiative, including whiteboard planning, roadmap scoping, and fullstack delivery.',
-            'It was a deeply rewarding experience and really honed my skills in cross-functional leadership.',
+            'Matricle is a CRM/ERP software vendor in Auckland, serving clients across logistics and manufacturing.',
+            'I built core modules using ASP.NET Core and Vue.js, covering order, project, and workflow management.',
+            'Designed a custom workflow engine that automated 60% of manual processes.',
+            'Improved delivery timelines by 30% and reduced defects through 150+ unit tests with NUnit & Moq.',
         ],
     },
     {
-        company: 'Polarr',
-        title: 'Senior Frontend Engineer',
-        period: 'Sep 2019 – Mar 2020',
+        company: 'Alibaba (CH)',
+        title: 'Senior Development Engineer',
+        period: 'Dec 2020 – Nov 2023',
         description: [
-            'Polarr is a creative tools company backed by Threshold and Pear VC.',
-            'I rebuilt the core Polarr Photo Editor in React with a focus on offline-first architecture.',
-            'At Polarr, I worked closely with designers and helped ship a GPU-accelerated rendering engine using WebGL.',
+            'Led backend design for logistics onboarding, CRM, and city-level agent task systems supporting millions of users.',
+            'Integrated Cainiao’s platforms with Alipay, WeChat, and Taobao, enabling real-time data exchange.',
+            'Reduced onboarding time by 40%, improved lead conversion by 25%, and optimized infra cost by 30%.',
+            'Mentored junior engineers and led cross-functional collaboration across logistics and operations.',
+        ],
+    },
+    {
+        company: 'WeDoctor (CH)',
+        title: 'Development Engineer',
+        period: 'Jan 2018 – Dec 2020',
+        description: [
+            'Worked on electronic prescription and pharmacy order systems in a regulated healthcare environment.',
+            'Integrated with multiple HIS systems for real-time prescription syncing and medication ordering.',
+            'Enabled 5x traffic scalability while maintaining low latency using Hystrix and optimized architecture.',
+            'Improved prescription-to-fulfillment time by 40% and boosted order conversion by 50%.',
         ],
     },
 ];
