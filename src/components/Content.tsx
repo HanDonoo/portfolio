@@ -134,16 +134,3 @@ export const Projects = forwardRef<HTMLDivElement>((_, ref) => (
     </div>
 ));
 
-export const Portfolio = forwardRef<HTMLDivElement>((_, ref) => (
-    <div id="portfolio" ref={ref} style={sectionStyle}>
-        <h2 style={titleStyle}>Blog / Portfolio</h2>
-
-    </div>
-));
-
-export const Contact = forwardRef<HTMLDivElement>((_, ref) => (
-    <div id="contact" ref={ref} style={sectionStyle}>
-        <h2 style={titleStyle}>Contact</h2>
-
-    </div>
-));

@@ -4,8 +4,6 @@ import Footer from './components/Footer';
 import {
     About,
     Projects,
-    Portfolio,
-    Contact,
 } from './components/Content';
 import {Experience} from './components/Experience';
 
@@ -13,16 +11,12 @@ const App: React.FC = () => {
     const aboutRef = useRef<HTMLDivElement>(null);
     const experienceRef = useRef<HTMLDivElement>(null);
     const projectsRef = useRef<HTMLDivElement>(null);
-    const portfolioRef = useRef<HTMLDivElement>(null);
-    const contactRef = useRef<HTMLDivElement>(null);
 
     const handleNavigate = (section: string) => {
         const refs: Record<string, React.RefObject<HTMLDivElement>> = {
             about: aboutRef,
             experience: experienceRef,
             projects: projectsRef,
-            portfolio: portfolioRef,
-            contact: contactRef,
         };
 
         refs[section]?.current?.scrollIntoView({ behavior: 'smooth' });
@@ -36,8 +30,6 @@ const App: React.FC = () => {
                 <About ref={aboutRef} />
                 <Experience ref={experienceRef} />
                 <Projects ref={projectsRef} />
-                <Portfolio ref={portfolioRef} />
-                <Contact ref={contactRef} />
             </div>
 
             <Footer />
