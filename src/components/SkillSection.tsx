@@ -13,7 +13,7 @@ const skillBoxStyle = (backgroundColor: string) => ({
     borderRadius: '16px',
     boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
     padding: '1.5rem',
-    width: '250px',
+    width: '400px',
     color: '#000',
     display: 'flex',
     flexDirection: 'column' as const,
@@ -34,24 +34,38 @@ const chipStyle = {
 const SkillSection = () => {
     const skillGroups = [
         {
-            title: '👨‍💻 Frontend Engineering',
+            title: '👨‍💻 Backend & Cloud Development',
+            color: '#93c5fd',
+            items: [
+                'Java', 'C#', 'Node.js', 'Python', '.NET Core', 'Spring Boot',
+                'Microservices', 'Redis', 'SQL', 'MongoDB',
+                'REST APIs', 'Kafka', 'RabbitMQ',
+                'Docker', 'Kubernetes', 'AWS', 'Azure'
+            ],
+        },
+        {
+            title: '🧑‍🎨 Frontend & UI Integration',
             color: '#a78bfa',
-            items: ['React.js', 'React Native', 'Next.js', 'TypeScript', 'Redux', 'MobX'],
+            items: [
+                'React.js', 'Vue.js', 'Next.js', 'TypeScript', 'Redux',
+                'Material UI', 'Tailwind CSS', 'HTML/CSS'
+            ],
         },
         {
-            title: '🛠️ API & Backend Integration',
-            color: '#fb923c',
-            items: ['Node.js', 'REST APIs', 'GraphQL', 'Firebase', 'Headless CMS'],
+            title: '⚙️ DevOps & CI/CD',
+            color: '#facc15',
+            items: [
+                'Jenkins', 'GitHub Actions', 'Docker Compose',
+                'Helm', 'Terraform', 'Prometheus', 'Grafana'
+            ],
         },
         {
-            title: '🎯 Product & Team Leadership',
+            title: '🧠 System Architecture & Product Thinking',
             color: '#34d399',
-            items: ['Roadmap Planning', 'Agile Execution', 'Stakeholder Collaboration', 'Sprint Management'],
-        },
-        {
-            title: '⚙️ Build & Optimization',
-            color: '#f9a8d4',
-            items: ['Webpack', 'Vite', 'Vercel', 'GitHub Actions', 'Jest', 'Vitest'],
+            items: [
+                'Scalable Architecture', 'System Design',
+                'DDD', 'Agile/Scrum', 'Swagger', 'Postman'
+            ],
         },
     ];
 
