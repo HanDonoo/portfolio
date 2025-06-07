@@ -1,9 +1,9 @@
 {
-  "name": "person_project",
+  "name": "portfolio",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://HanDonoo.github.io/person_project",
+  "homepage": "https://HanDonoo.github.io/portfolio",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",

@@ -51,7 +51,7 @@ export const About = forwardRef<HTMLDivElement>((_, ref) => (
             {/* 左侧照片 */}
             <div style={{ ...imageWrapperStyle, flex: '1 1 33%' }}>
                 <img
-                    src="/person_project/images/photo.jpg"
+                    src="/portfolio/images/photo.jpg"
                     alt="Kevin Han"
                     style={imageStyle}
                 />
