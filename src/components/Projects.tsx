@@ -4,7 +4,8 @@ import ProjectCard from './ProjectCard';
 const sectionStyle = {
     marginBottom: '2rem',
     padding: '0 1rem',
-    paddingBottom: '5rem', // ⬅️ 增加距底部的空间
+    paddingBottom: '4rem', // ⬅️ 增加距底部的空间
+    paddingTop: '4rem'
 };
 
 const titleStyle = {

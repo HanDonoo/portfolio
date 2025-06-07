@@ -5,11 +5,13 @@ interface ExperienceData {
     title: string;
     period: string;
     description: string[];
+    logo?: string; // 添加 logo 字段
 }
 
 const experiences: ExperienceData[] = [
     {
         company: 'Matricle (NZ)',
+        logo: '/portfolio/logo/favicon.ico',
         title: 'Full Stack Software Engineer (Part-Time)',
         period: 'Apr 2024 – Present',
         description: [
@@ -21,6 +23,7 @@ const experiences: ExperienceData[] = [
     },
     {
         company: 'Alibaba (CH)',
+        logo: '/portfolio/logo/img_2.png',
         title: 'Senior Development Engineer',
         period: 'Dec 2020 – Nov 2023',
         description: [
@@ -32,6 +35,7 @@ const experiences: ExperienceData[] = [
     },
     {
         company: 'WeDoctor (CH)',
+        logo: '/portfolio/logo/img_5.png',
         title: 'Development Engineer',
         period: 'Jan 2018 – Dec 2020',
         description: [
@@ -46,6 +50,7 @@ const experiences: ExperienceData[] = [
 const sectionStyle = {
     marginBottom: '2rem',
     padding: '0 1rem',
+    paddingTop: '4rem',
 };
 
 const titleStyle = {
@@ -65,9 +70,9 @@ const containerStyle = {
     display: 'flex',
     flexDirection: 'row' as const,
     gap: '2rem',
-    maxWidth: '1600px',     // ✅ 限宽
-    margin: '0 auto',       // ✅ 居中
-    padding: '0 2rem',      // ✅ 增加左右内边距
+    maxWidth: '1600px',
+    margin: '0 auto',
+    padding: '0 2rem',
 };
 
 const listStyle = {
@@ -82,6 +87,15 @@ const itemStyle = {
     borderRadius: '8px',
     transition: 'background 0.2s ease-in-out',
     cursor: 'pointer',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.75rem',
+};
+
+const logoStyle = {
+    width: '32px',
+    height: '32px',
+    objectFit: 'contain' as const,
 };
 
 const detailStyle = {
@@ -99,7 +113,7 @@ export const Experience = forwardRef<HTMLDivElement>((_, ref) => {
         <div id="experience" ref={ref} style={sectionStyle}>
             <h2 style={{ ...titleStyle, textAlign: 'center' }}>Professional Experience</h2>
             <div style={containerStyle}>
-                {/* 右边详情 */}
+                {/* 右侧详情 */}
                 <div style={detailStyle}>
                     <h3 style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
                         {experiences[selectedIndex].company}
@@ -115,7 +129,8 @@ export const Experience = forwardRef<HTMLDivElement>((_, ref) => {
                         </p>
                     ))}
                 </div>
-                {/* 左边公司列表 */}
+
+                {/* 左侧公司列表 */}
                 <div style={listStyle}>
                     {experiences.map((exp, i) => (
                         <div
@@ -126,9 +141,18 @@ export const Experience = forwardRef<HTMLDivElement>((_, ref) => {
                             }}
                             onClick={() => setSelectedIndex(i)}
                         >
-                            <div style={{ fontWeight: 'bold' }}>{exp.company}</div>
-                            <div>{exp.title}</div>
-                            <div style={{ fontSize: '0.9rem', color: '#666' }}>{exp.period}</div>
+                            {exp.logo && (
+                                <img
+                                    src={exp.logo}
+                                    alt={`${exp.company} logo`}
+                                    style={logoStyle}
+                                />
+                            )}
+                            <div>
+                                <div style={{ fontWeight: 'bold' }}>{exp.company}</div>
+                                <div>{exp.title}</div>
+                                <div style={{ fontSize: '0.9rem', color: '#666' }}>{exp.period}</div>
+                            </div>
                         </div>
                     ))}
                 </div>
