@@ -8,12 +8,10 @@ interface ProjectCardProps {
     imageUrl: string;
     projectUrl: string;
     borderColor: string;
-    // 将外部样式作为 prop 传入
     paragraphStyle: React.CSSProperties;
 }
 
-// 这是一个为项目卡片创建的可复用新组件
-// 使用 export default 默认导出
+// 可复用项目卡片组件
 const ProjectCard: React.FC<ProjectCardProps> = ({
                                                      title,
                                                      description,
@@ -21,9 +19,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                                                      imageUrl,
                                                      projectUrl,
                                                      borderColor,
-                                                     paragraphStyle // 接收样式 prop
+                                                     paragraphStyle
                                                  }) => {
-    // 卡片的基础样式
     const cardStyle: React.CSSProperties = {
         backgroundColor: '#fff',
         border: `2px solid ${borderColor}`,
@@ -33,19 +30,46 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         flexDirection: 'column',
         textAlign: 'left',
         boxShadow: '0 8px 16px rgba(0,0,0,0.05)',
-        flex: '1 1 45%',
-        minWidth: '320px',
-        maxWidth: '480px',
+        width: 'calc(50% - 1rem)',
+        minWidth: '520px',
+        maxWidth: '720px',
     };
 
-    // ... 其他样式变量定义保持不变 ...
-    // const cardImageStyle: React.CSSProperties = { /* ... */ };
-    const cardContentStyle: React.CSSProperties = { flexGrow: 1 };
-    const cardListStyle: React.CSSProperties = { /* ... */ };
-    const cardFooterStyle: React.CSSProperties = { /* ... */ };
-    const cardLinkStyle: React.CSSProperties = { /* ... */ };
-    const visitButtonStyle: React.CSSProperties = { /* ... */ };
+    const cardContentStyle: React.CSSProperties = {
+        flexGrow: 1,
+    };
 
+    const cardListStyle: React.CSSProperties = {
+        paddingLeft: '1.2rem',
+        marginTop: '1rem',
+        marginBottom: 0,
+    };
+
+    const cardFooterStyle: React.CSSProperties = {
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginTop: '1.5rem',
+    };
+
+    const cardLinkStyle: React.CSSProperties = {
+        color: '#6b7280', // 灰色
+        fontSize: '0.875rem',
+        wordBreak: 'break-word',
+        maxWidth: '60%',
+    };
+
+    const visitButtonStyle: React.CSSProperties = {
+        padding: '0.5rem 1rem',
+        backgroundColor: '#3b82f6',
+        color: '#fff',
+        border: 'none',
+        borderRadius: '8px',
+        textDecoration: 'none',
+        fontWeight: 'bold',
+        cursor: 'pointer',
+        whiteSpace: 'nowrap',
+    };
 
     return (
         <div style={cardStyle}>
@@ -54,7 +78,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </div>
             <div style={cardContentStyle}>
                 <h3 style={{ fontSize: '1.5rem', marginTop: '1.5rem', marginBottom: '0.75rem' }}>{title}</h3>
-                {/* 现在使用传入的 paragraphStyle prop */}
                 <p style={paragraphStyle}>{description}</p>
                 <ul style={cardListStyle}>
                     {features.map((feature, index) => (
@@ -64,7 +87,12 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </div>
             <div style={cardFooterStyle}>
                 <span style={cardLinkStyle}>{projectUrl}</span>
-                <a href={`https://${projectUrl}`} target="_blank" rel="noopener noreferrer" style={visitButtonStyle}>
+                <a
+                    href={`https://${projectUrl}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={visitButtonStyle}
+                >
                     Visit Website
                 </a>
             </div>
@@ -72,4 +100,4 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     );
 };
 
-export default ProjectCard; // <--- 修正：添加默认导出
+export default ProjectCard;

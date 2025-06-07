@@ -1,10 +1,8 @@
 import React, { useRef } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import {
-    About,
-    Projects,
-} from './components/Content';
+import Projects from './components/Projects';
+import {About} from './components/Content';
 import {Experience} from './components/Experience';
 
 const App: React.FC = () => {
