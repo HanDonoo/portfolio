@@ -23,22 +23,37 @@ const Footer: React.FC = () => {
                     // 3. 实现响应式布局
                     flexDirection: { xs: 'column', sm: 'row' }, // 在小屏幕(xs)上垂直堆叠, 在小屏幕及以上(sm)水平排列
                     gap: 2, // 设置堆叠时的间距
-                    maxWidth: '1200px', // 设置最大内容宽度
+                    maxWidth: '1400px', // 设置最大内容宽度
                     mx: 'auto', // mx: 'auto' 使内容水平居中
                 }}
             >
                 {/* 4. 左侧内容 */}
-                <Box sx={{ textAlign: { xs: 'center', sm: 'left' } }}>
+                <Box
+                    sx={{
+                        textAlign: { xs: 'center', sm: 'left' },
+                        width: '200px', // ✅ 设置固定宽度
+                    }}
+                >
                     <Typography
-                        variant="h6" // 使用 h6 变体让字体稍大且加粗
-                        component="p" // 将其渲染为 p 标签更符合语义
-                        sx={{ fontWeight: 'bold' }}
+                        variant="h5"
+                        component="p"
+                        sx={{
+                            fontWeight: 'bold',
+                            whiteSpace: 'nowrap',         // ✅ 防止换行
+                            overflow: 'hidden',           // ✅ 溢出隐藏（可选）
+                            textOverflow: 'ellipsis',     // ✅ 超出显示省略号（可选）
+                        }}
                     >
                         Kevin Han
                     </Typography>
                     <Typography
                         variant="body2"
-                        sx={{ color: 'grey.400' }} // 使用 MUI 的主题颜色来设置灰色
+                        sx={{
+                            color: 'grey.400',
+                            whiteSpace: 'nowrap',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                        }}
                     >
                         Auckland, New Zealand
                     </Typography>

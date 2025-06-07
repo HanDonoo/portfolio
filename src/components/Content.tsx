@@ -15,20 +15,23 @@ const paragraphStyle = {
 
 const containerStyle = {
     display: 'flex',
-    flexWrap: 'wrap' as const,
-    alignItems: 'stretch',
+    flexWrap: 'nowrap' as const,      // 保证左右不换行，等高
+    alignItems: 'stretch',   // 子元素等高拉伸
     minHeight: '400px',
-    maxWidth: '1600px',     // ✅ 限宽
-    margin: '0 auto',       // ✅ 居中
-    padding: '0 2rem',      // ✅ 增加左右内边距
+    maxWidth: '1600px',
+    margin: '0 auto',
+    padding: '0 2rem',
 };
 
 const imageWrapperStyle = {
-    flex: '1 1 100%',
-    maxWidth: '100%',
+    flex: '1 1 33%',
+    maxWidth: '33%',
     display: 'flex',
-    justifyContent: 'center',
-    marginBottom: '1rem',
+    flexDirection: 'column' as const,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    height: '100%',           // 让左右两边等高
+    marginBottom: 0,          // 去掉默认底部间距
 };
 
 const imageStyle = {
@@ -41,11 +44,13 @@ const imageStyle = {
 };
 
 const textWrapperStyle = {
-    flex: '1 1 100%',
-    maxWidth: '100%',
+    flex: '1 1 66%',
+    maxWidth: '66%',
     display: 'flex',
     flexDirection: 'column' as const,
     justifyContent: 'center',
+    height: '100%',          // 让左右两边等高
+    paddingLeft: '1.5rem',
 };
 
 const iconStyle = {
@@ -59,16 +64,8 @@ const iconStyle = {
 export const About = forwardRef<HTMLDivElement>((_, ref) => (
     <div id="about" ref={ref} style={sectionStyle}>
         <div style={containerStyle}>
-            {/* 左侧照片 */}
-            <div
-                style={{
-                    ...imageWrapperStyle,
-                    flex: '1 1 33%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                }}
-            >
+            {/* 左侧照片 + 联系方式 */}
+            <div style={imageWrapperStyle}>
                 <img
                     src="/portfolio/images/photo.jpg"
                     alt="Kevin Han"
@@ -88,7 +85,7 @@ export const About = forwardRef<HTMLDivElement>((_, ref) => (
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{
-                            color: '#3b82f6',   // 统一蓝色
+                            color: '#3b82f6',
                             textDecoration: 'none',
                             display: 'flex',
                             alignItems: 'center',
@@ -108,7 +105,7 @@ export const About = forwardRef<HTMLDivElement>((_, ref) => (
                     <a
                         href="mailto:lhanddong@gmail.com"
                         style={{
-                            color: '#3b82f6',   // 统一蓝色
+                            color: '#3b82f6',
                             textDecoration: 'none',
                             display: 'flex',
                             alignItems: 'center',
@@ -129,7 +126,7 @@ export const About = forwardRef<HTMLDivElement>((_, ref) => (
             </div>
 
             {/* 右侧文字 */}
-            <div style={{ ...textWrapperStyle, flex: '1 1 66%' }}>
+            <div style={textWrapperStyle}>
                 {[
                     `Hi 🙋🏻‍♂️, I’m Kevin, a software engineer passionate about building scalable systems that solve real-world problems — from logistics and healthcare to enterprise automation.`,
                     `Over the past several years, I’ve led the development of mission-critical backend services and full-stack platforms at companies like Alibaba, WeDoctor, and local New Zealand tech firms.`,

@@ -24,7 +24,7 @@ const App: React.FC = () => {
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
             <Header onNavigate={handleNavigate} />
 
-            <div style={{ paddingTop: '80px', paddingLeft: '1rem', paddingRight: '1rem', flex: 1 }}>
+            <div style={{ paddingTop: '120px', paddingLeft: '1rem', paddingRight: '1rem', flex: 1 }}>
                 <About ref={aboutRef} />
                 <Experience ref={experienceRef} />
                 <Projects ref={projectsRef} />
