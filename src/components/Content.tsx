@@ -18,6 +18,9 @@ const containerStyle = {
     flexWrap: 'wrap' as const,
     alignItems: 'stretch',
     minHeight: '400px',
+    maxWidth: '1600px',     // ✅ 限宽
+    margin: '0 auto',       // ✅ 居中
+    padding: '0 2rem',      // ✅ 增加左右内边距
 };
 
 const imageWrapperStyle = {
@@ -45,16 +48,84 @@ const textWrapperStyle = {
     justifyContent: 'center',
 };
 
+const iconStyle = {
+    height: '1em',
+    width: '1em',
+    marginRight: '0.4em',
+    verticalAlign: 'middle',
+    flexShrink: 0,
+};
+
 export const About = forwardRef<HTMLDivElement>((_, ref) => (
     <div id="about" ref={ref} style={sectionStyle}>
         <div style={containerStyle}>
             {/* 左侧照片 */}
-            <div style={{ ...imageWrapperStyle, flex: '1 1 33%' }}>
+            <div
+                style={{
+                    ...imageWrapperStyle,
+                    flex: '1 1 33%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                }}
+            >
                 <img
                     src="/portfolio/images/photo.jpg"
                     alt="Kevin Han"
                     style={imageStyle}
                 />
+                <div
+                    style={{
+                        marginTop: '0.5rem',
+                        fontSize: '1rem',
+                        display: 'flex',
+                        gap: '1.5rem',
+                        justifyContent: 'center',
+                    }}
+                >
+                    <a
+                        href="https://www.linkedin.com/in/kevin-han-1059882b6/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                            color: '#3b82f6',   // 统一蓝色
+                            textDecoration: 'none',
+                            display: 'flex',
+                            alignItems: 'center',
+                            fontWeight: '600',
+                        }}
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            style={iconStyle}
+                        >
+                            <path d="M4.98 3.5C4.98 4.88071 3.88071 6 2.5 6C1.11929 6 0 4.88071 0 3.5C0 2.11929 1.11929 1 2.5 1C3.88071 1 4.98 2.11929 4.98 3.5ZM0 8H5V24H0V8ZM8 8H13.5V10.72H13.57C14.12 9.46 15.77 8.1 18.12 8.1C22.5 8.1 24 10.74 24 15.11V24H18V16.26C18 14.2 17.52 12.82 15.25 12.82C13 12.82 12.5 14.28 12.5 16.13V24H7.5V8H8Z" />
+                        </svg>
+                        LinkedIn
+                    </a>
+                    <a
+                        href="mailto:lhanddong@gmail.com"
+                        style={{
+                            color: '#3b82f6',   // 统一蓝色
+                            textDecoration: 'none',
+                            display: 'flex',
+                            alignItems: 'center',
+                            fontWeight: '600',
+                        }}
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 24 24"
+                            fill="currentColor"
+                            style={iconStyle}
+                        >
+                            <path d="M20 4H4C2.9 4 2 4.9 2 6V18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" />
+                        </svg>
+                        lhanddong@gmail.com
+                    </a>
+                </div>
             </div>
 
             {/* 右侧文字 */}

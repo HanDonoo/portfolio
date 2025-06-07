@@ -65,6 +65,9 @@ const containerStyle = {
     display: 'flex',
     flexDirection: 'row' as const,
     gap: '2rem',
+    maxWidth: '1600px',     // ✅ 限宽
+    margin: '0 auto',       // ✅ 居中
+    padding: '0 2rem',      // ✅ 增加左右内边距
 };
 
 const listStyle = {
