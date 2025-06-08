@@ -81,7 +81,7 @@ export const About = forwardRef<HTMLDivElement>((_, ref) => (
                     }}
                 >
                     <a
-                        href="https://www.linkedin.com/in/kevin-han-1059882b6/"
+                        href="www.linkedin.com/in/kevin-han-1059882b6"
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{
