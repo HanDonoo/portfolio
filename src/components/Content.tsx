@@ -67,7 +67,7 @@ export const About = forwardRef<HTMLDivElement>((_, ref) => (
             {/* 左侧照片 + 联系方式 */}
             <div style={imageWrapperStyle}>
                 <img
-                    src="/portfolio/images/photo.jpg"
+                    src="/images/photo.jpg"
                     alt="Kevin Han"
                     style={imageStyle}
                 />

@@ -11,7 +11,7 @@ interface ExperienceData {
 const experiences: ExperienceData[] = [
     {
         company: 'Matricle (NZ)',
-        logo: '/portfolio/logo/favicon.ico',
+        logo: '/logo/favicon.ico',
         title: 'Full Stack Software Engineer (Part-Time)',
         period: 'Apr 2024 – Present',
         description: [
@@ -23,7 +23,7 @@ const experiences: ExperienceData[] = [
     },
     {
         company: 'Alibaba (CH)',
-        logo: '/portfolio/logo/img_2.png',
+        logo: '/logo/img_2.png',
         title: 'Senior Development Engineer',
         period: 'Dec 2020 – Nov 2023',
         description: [
@@ -35,7 +35,7 @@ const experiences: ExperienceData[] = [
     },
     {
         company: 'WeDoctor (CH)',
-        logo: '/portfolio/logo/img_5.png',
+        logo: '/logo/img_5.png',
         title: 'Development Engineer',
         period: 'Jan 2018 – Dec 2020',
         description: [
