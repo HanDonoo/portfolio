@@ -108,7 +108,7 @@ const detailStyle = {
 
 export const Experience = forwardRef<HTMLDivElement>((_, ref) => {
     const [selectedIndex, setSelectedIndex] = useState(0);
-
+    console.log(123);
     return (
         <div id="experience" ref={ref} style={sectionStyle}>
             <h2 style={{ ...titleStyle, textAlign: 'center' }}>Professional Experience</h2>
