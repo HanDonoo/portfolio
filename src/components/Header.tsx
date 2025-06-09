@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import useMediaQuery from './useMediaQuery';
 
 interface HeaderProps {
     onNavigate: (section: 'about' | 'experience' | 'projects' | 'portfolio' | 'contact') => void;
@@ -14,6 +15,7 @@ const navItems = [
 ];
 
 const Header: React.FC<HeaderProps> = ({ current, onNavigate }) => {
+    const isMobile = useMediaQuery('(max-width: 768px)');
     const [showCalendly, setShowCalendly] = useState(false);
 
     const handleClick = (value: string) => {
@@ -24,20 +26,17 @@ const Header: React.FC<HeaderProps> = ({ current, onNavigate }) => {
         }
     };
 
+    const itemsToDisplay = isMobile
+        ? navItems.filter(item => ['portfolio', 'contact'].includes(item.value))
+        : navItems;
+
     return (
         <>
-            <header
-                style={{
-                    ...styles.appBar,
-                    backgroundColor: 'rgba(255, 255, 255, 0.85)',
-                    backdropFilter: 'saturate(180%) blur(10px)',
-                    transition: 'background-color 0.3s ease, backdrop-filter 0.3s ease',
-                }}
-            >
+            <header style={styles.appBar}>
                 <div style={styles.toolbar}>
                     <h1 style={styles.title}>Kevin</h1>
-                    <nav>
-                        {navItems.map(item => {
+                    <nav style={styles.nav}>
+                        {itemsToDisplay.map(item => {
                             const isActive = current === item.value;
                             const isContact = item.value === 'contact';
 
@@ -89,9 +88,9 @@ const styles: Record<string, React.CSSProperties> = {
         position: 'fixed',
         top: 0,
         width: '100%',
-        color: '#222222',
-        background: 'linear-gradient(to bottom, white 50%, transparent 50%)',
-        boxShadow: 'none',
+        backgroundColor: 'rgba(255, 255, 255, 0.85)',
+        backdropFilter: 'saturate(180%) blur(10px)',
+        transition: 'background-color 0.3s ease, backdrop-filter 0.3s ease',
         zIndex: 1000,
         height: 64,
     },
@@ -99,16 +98,19 @@ const styles: Record<string, React.CSSProperties> = {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        maxWidth: '100%',
-        margin: '0 auto',
         padding: '0 20px',
         height: 64,
+        maxWidth: '100%',
     },
     title: {
         fontWeight: '700',
         fontSize: '1.6rem',
         margin: 0,
         color: '#1a1a1a',
+    },
+    nav: {
+        display: 'flex',
+        alignItems: 'center',
     },
     button: {
         backgroundColor: '#e0e7ff',
@@ -131,7 +133,7 @@ const styles: Record<string, React.CSSProperties> = {
         boxShadow: '0 4px 12px rgba(67, 56, 202, 0.6)',
     },
     contactButton: {
-        backgroundColor: '#3b82f6',  // 这里是蓝色背景
+        backgroundColor: '#3b82f6',
         color: '#fff',
         border: '1.5px solid #2563eb',
         boxShadow: '0 2px 6px rgba(37, 99, 235, 0.5)',
