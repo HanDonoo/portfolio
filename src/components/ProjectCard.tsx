@@ -1,6 +1,6 @@
 import React from 'react';
+import useMediaQuery from './useMediaQuery';
 
-// 定义组件接收的 Props 类型
 interface ProjectCardProps {
     title: string;
     description: string;
@@ -11,7 +11,6 @@ interface ProjectCardProps {
     paragraphStyle: React.CSSProperties;
 }
 
-// 可复用项目卡片组件
 const ProjectCard: React.FC<ProjectCardProps> = ({
                                                      title,
                                                      description,
@@ -21,6 +20,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
                                                      borderColor,
                                                      paragraphStyle
                                                  }) => {
+    const isMobile = useMediaQuery('(max-width: 768px)');
+
     const cardStyle: React.CSSProperties = {
         backgroundColor: '#fff',
         border: `2px solid ${borderColor}`,
@@ -30,9 +31,10 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         flexDirection: 'column',
         textAlign: 'left',
         boxShadow: '0 8px 16px rgba(0,0,0,0.05)',
-        width: 'calc(50% - 1rem)',
-        minWidth: '520px',
+        width: isMobile ? '100%' : 'calc(50% - 1rem)',
+        minWidth: isMobile ? 'auto' : '520px',
         maxWidth: '720px',
+        boxSizing: 'border-box',
     };
 
     const cardContentStyle: React.CSSProperties = {
@@ -53,7 +55,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     };
 
     const cardLinkStyle: React.CSSProperties = {
-        color: '#6b7280', // 灰色
+        color: '#6b7280',
         fontSize: '0.875rem',
         wordBreak: 'break-word',
         maxWidth: '60%',

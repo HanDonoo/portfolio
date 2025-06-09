@@ -1,10 +1,11 @@
 import React, { forwardRef } from 'react';
 import ProjectCard from './ProjectCard';
+import useMediaQuery from './useMediaQuery';
 
 const sectionStyle = {
     marginBottom: '2rem',
     padding: '0 1rem',
-    paddingBottom: '4rem', // ⬅️ 增加距底部的空间
+    paddingBottom: '4rem',
     paddingTop: '4rem'
 };
 
@@ -20,15 +21,6 @@ const paragraphStyle = {
     lineHeight: 1.6,
     marginBottom: '1rem',
     wordBreak: 'break-word',
-};
-
-const projectsContainerStyle = {
-    display: 'flex',
-    flexWrap: 'wrap' as const,
-    gap: '2rem',                     // ✅ 保持 gap 不变
-    justifyContent: 'space-between',
-    maxWidth: '1400px',             // ✅ 可调宽一些以容纳更大的卡片
-    margin: '0 auto',
 };
 
 const projectsData = [
@@ -53,7 +45,7 @@ const projectsData = [
             "Delivered 25% faster order processing and 30% fewer project delays through system improvements.",
         ],
         imageUrl: "/images/matricle2.png",
-        projectUrl: "matricle.com/solutions/manufacturing",
+        projectUrl: "matricle.com",
         borderColor: "#60a5fa",
     },
     {
@@ -106,25 +98,39 @@ const projectsData = [
     },
 ];
 
-const Projects = forwardRef<HTMLDivElement>((_, ref) => (
-    <div id="projects" ref={ref} style={sectionStyle}>
-        <h2 style={titleStyle}>Recent Projects</h2>
-        <div style={projectsContainerStyle}>
-            {projectsData.map((project, index) => (
-                <ProjectCard
-                    key={index}
-                    title={project.title}
-                    description={project.description}
-                    features={project.features}
-                    imageUrl={project.imageUrl}
-                    projectUrl={project.projectUrl}
-                    borderColor={project.borderColor}
-                    // @ts-expect-error 传入样式控制段落样式
-                    paragraphStyle={paragraphStyle}
-                />
-            ))}
+const Projects = forwardRef<HTMLDivElement>((_, ref) => {
+    const isMobile = useMediaQuery('(max-width: 768px)');
+
+    const projectsContainerStyle: React.CSSProperties = {
+        display: 'flex',
+        flexDirection: isMobile ? 'column' : 'row',
+        flexWrap: 'wrap',
+        gap: '2rem',
+        justifyContent: 'space-between',
+        maxWidth: '1400px',
+        margin: '0 auto',
+    };
+
+    return (
+        <div id="projects" ref={ref} style={sectionStyle}>
+            <h2 style={titleStyle}>Recent Projects</h2>
+            <div style={projectsContainerStyle}>
+                {projectsData.map((project, index) => (
+                    <ProjectCard
+                        key={index}
+                        title={project.title}
+                        description={project.description}
+                        features={project.features}
+                        imageUrl={project.imageUrl}
+                        projectUrl={project.projectUrl}
+                        borderColor={project.borderColor}
+                        // @ts-expect-error
+                        paragraphStyle={paragraphStyle}
+                    />
+                ))}
+            </div>
         </div>
-    </div>
-));
+    );
+});
 
 export default Projects;
