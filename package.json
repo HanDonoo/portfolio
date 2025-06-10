@@ -17,6 +17,8 @@
     "@mui/icons-material": "^7.1.0",
     "@mui/material": "^7.1.0",
     "gh-pages": "^6.3.0",
+    "gray-matter": "^4.0.3",
+    "highlight.js": "^11.11.1",
     "lucide-react": "^0.513.0",
     "react": "^19.1.0",
     "react-calendly": "^4.4.0",

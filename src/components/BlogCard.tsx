@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import ReactMarkdown from 'react-markdown';
+import rehypeHighlight from 'rehype-highlight';
 
 interface BlogCardProps {
     title: string;
@@ -14,8 +16,18 @@ const BlogCard: React.FC<BlogCardProps> = ({ title, date, summary, content }) =>
         <div style={styles.card}>
             <h2 style={styles.title}>{title}</h2>
             <p style={styles.date}>{date}</p>
-            <p style={styles.summary}>{summary}</p>
-            {expanded && <p style={styles.content}>{content}</p>}
+            <div className="markdown-body" style={styles.summary}>
+                <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
+                    {summary}
+                </ReactMarkdown>
+            </div>
+            {expanded && (
+                <div className="markdown-body" style={styles.content}>
+                    <ReactMarkdown rehypePlugins={[rehypeHighlight]}>
+                        {content}
+                    </ReactMarkdown>
+                </div>
+            )}
             <button onClick={() => setExpanded(!expanded)} style={styles.button}>
                 {expanded ? 'Show Less' : 'Show More'}
             </button>
