@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import useMediaQuery from './useMediaQuery';
+import { useNavigate, Link } from 'react-router-dom';
 
 interface HeaderProps {
-    onNavigate: (section: 'about' | 'experience' | 'projects' | 'portfolio' | 'contact') => void;
+    onNavigate?: (section: 'about' | 'experience' | 'projects') => void;
     current?: string;
 }
 
@@ -17,12 +18,25 @@ const navItems = [
 const Header: React.FC<HeaderProps> = ({ current, onNavigate }) => {
     const isMobile = useMediaQuery('(max-width: 768px)');
     const [showCalendly, setShowCalendly] = useState(false);
+    const navigate = useNavigate();
 
     const handleClick = (value: string) => {
-        if (value === 'contact') {
+        const isHomePageSection = ['about', 'experience', 'projects'].includes(value);
+
+        if (isHomePageSection) {
+            // 如果 onNavigate 函数存在 (说明我们在 HomePage 上)
+            if (onNavigate) {
+                // 执行平滑滚动
+                onNavigate(value as any);
+            } else {
+                // 如果 onNavigate 不存在 (说明我们在 BlogPage 等其他页面上)
+                // 就跳转到主页并带上锚点，让 HomePage 自己去处理滚动
+                navigate(`/#${value}`);
+            }
+        } else if (value === 'portfolio') {
+            navigate('/blog');
+        } else if (value === 'contact') {
             setShowCalendly(true);
-        } else {
-            onNavigate(value as any);
         }
     };
 
@@ -34,7 +48,9 @@ const Header: React.FC<HeaderProps> = ({ current, onNavigate }) => {
         <>
             <header style={styles.appBar}>
                 <div style={styles.toolbar}>
-                    <h1 style={styles.title}>Kevin</h1>
+                    <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                        <h1 style={styles.title}>Kevin</h1>
+                    </Link>
                     <nav style={styles.nav}>
                         {itemsToDisplay.map(item => {
                             const isActive = current === item.value;
