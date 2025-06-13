@@ -4,7 +4,7 @@ import useMediaQuery from './useMediaQuery';
 
 export const blog = {
     title: 'Frontend Performance Optimization: Rendering Large-Scale Map Data in Real-World Projects',
-    date: 'June 2024',
+    date: 'December 2023',
     summary: `
 ### Rendering map overlays with dynamic business data sounds easy—until you have to do it at scale.
 In this article, we break down a real-world performance optimization project involving thousands of map features, real-time interactions, and seamless user experience.
