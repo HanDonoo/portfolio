@@ -2,10 +2,115 @@ import React from 'react';
 import BlogCard from './BlogCard';
 import useMediaQuery from './useMediaQuery';
 
+export const blog = {
+    title: 'Frontend Performance Optimization: Rendering Large-Scale Map Data in Real-World Projects',
+    date: 'June 2024',
+    summary: `
+### Rendering map overlays with dynamic business data sounds easy—until you have to do it at scale.
+In this article, we break down a real-world performance optimization project involving thousands of map features, real-time interactions, and seamless user experience.
+  `,
+    content: `
+## 1. The Background: What We Were Trying to Achieve
+
+In one of our projects, we integrated Gaode Maps (AMap) as the base layer and overlaid business-critical features on top of it. These features included:
+
+- Manual annotations from front-line staff.
+- Auto-generated overlays from backend algorithms.
+
+We had many types of map features to display—sometimes all at once—and the frontend needed to:
+
+- Support complex filtering.
+- Render a high density of elements.
+- Remain responsive during zoom and pan operations.
+
+## 2. The Bottlenecks We Faced
+
+As the number of features increased, we ran into significant performance issues:
+
+- **Rendering delays** when displaying many overlays at once.
+- **Stuttering** when zooming or dragging the map.
+- **Lag during rapid interactions**, especially on mobile devices.
+- **Backend throughput** was strained when fetching large amounts of raw WKT (Well-Known Text) geometry.
+
+We realized we needed to optimize both backend data transfer and frontend rendering.
+
+---
+
+## 3. Our Optimization Strategy
+
+We approached this problem from multiple layers: backend, data shaping, and frontend rendering.
+
+### 3.1 Backend Optimization: Data Compression
+
+Since the backend returned features in WKT format, which can be verbose, we implemented a data compression strategy:
+
+- **Simplified geometries** using known tolerance levels.
+- Applied **gzip compression** on API responses.
+- In the future, we plan to migrate to binary formats like **GeoJSON** or **TopoJSON**, which offer much smaller footprints.
+
+### 3.2 Data Prefetching: Expanding the Fetch Boundary
+
+To handle panning smoothly, we changed our data loading logic:
+
+- Every time the map viewport changed, we **extended the fetch boundary** in all directions.
+- This preloaded features slightly outside the visible area.
+- The result: **no visual lag** during small drag operations.
+
+This “over-fetch” approach trades off a small increase in data for a much better user experience.
+
+### 3.3 Frontend Rendering Optimizations
+
+We used React as our frontend framework and optimized rendering with:
+
+- **Batching updates** to avoid re-renders per feature.
+- **Grouping DOM operations** to reduce layout thrashing.
+- Used **canvas-based rendering layers** instead of SVG when element count was too high.
+- Applied **debouncing** on pan/zoom events to reduce redundant requests.
+
+### 3.4 Zoom Level Control
+
+We noticed that zooming all the way out triggered a full dataset fetch—which was unnecessary and meaningless for the business use case.
+
+So we:
+
+- **Restricted zoom levels** where features would be displayed.
+- For example, certain overlays only appear when zoomed in to level 15+.
+- This reduced the number of features in view, greatly improving performance.
+
+---
+
+## 4. Possible Future Enhancements
+
+Though our current optimizations worked well, we also identified future directions:
+
+- **Vector tile rendering** to fetch pre-broken-down data tiles.
+- Use of **WebGL** for GPU-accelerated drawing.
+- **LOD (Level of Detail)** mechanisms: render fewer details at lower zoom levels.
+
+---
+
+## 5. Key Takeaways
+
+From this experience, we’ve learned:
+
+1. **Map-based interfaces require system-level thinking**. You must consider data volume, user behavior, rendering model, and network limits.
+2. **Prefetching and simplification** are two of the easiest, most effective techniques.
+3. **Not all map features are equal**—filter and control what's shown at different zoom levels.
+4. **React + Canvas + Geo strategies** can scale well if used correctly.
+
+---
+
+This performance tuning effort significantly improved responsiveness, reduced rendering times, and gave users a much smoother experience when working with rich spatial data on mobile and web.
+
+  `
+};
+
+
 const blogs = [
+    blog,
     {
         title: 'A Real-World Retrospective: How We Achieved Zero-Downtime MySQL Sharding for a Table with 30 Million+ Rows',
-        date: 'January 2024',
+        date: 'January 2023',
         summary: `
 ### Our core business table exceeded **30 million** rows, revealing a major performance bottleneck. How do you perform "open-heart surgery" on a live system without disrupting the business?
 This article provides a complete retrospective of our entire process, from technology selection to a **zero-downtime** launch.
